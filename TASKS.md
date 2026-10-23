@@ -2,14 +2,10 @@
 
 ## Now — Milestone 1: data + model
 
-- [ ] Download the Chicago collision dataset by hand (Dryad blocks scripted downloads): https://doi.org/10.5061/dryad.8rr0498 → put `Chicago_collision_data.csv` and `Light_levels_dryad.csv` in `data/raw/winger2019/`
-- [ ] Inspect collision data: years covered, fields, McCormick Place vs. rest of Chicago
-- [ ] Use the McCormick Place nightly light scores as a model feature
-- [ ] Parse NOAA hourly weather into nightly features (wind, ceiling, sky cover, rain, temperature change)
-- [ ] Compute moon phase / illumination for each night
-- [ ] Build one table: one row per night, collisions + weather features
-- [ ] Exploratory plots: collisions by day of year, by wind direction, by cloud cover
-- [ ] Fit negative binomial model; check fit, overdispersion
+- [ ] Fit negative binomial model on the analysis set (MP, 2000–2016, surveyed nights); check fit, overdispersion
+- [ ] Fall signal: try wind direction (sin/cos) and a cold-front feature, since the north–south tailwind misses it
+- [ ] Test interactions: tailwind × season, low clouds × big-flight nights
+- [ ] Decide what to do with 1978–1999 (no survey record): leave out, or use as a sensitivity check
 - [ ] Backtest on held-out years; pick Low/Moderate/High/Extreme cutoffs
 - [ ] Save fitted model to `models/`
 
@@ -44,3 +40,9 @@
 - [x] Project scaffold (uv, git, README, task list)
 - [x] Public GitHub repo: https://github.com/sarikat/bird-forecast
 - [x] Download O'Hare hourly weather 1978–2019 (`scripts/download_weather.py`)
+- [x] Download collision + light-score data (Dryad, manual) into `data/raw/winger2019/`
+- [x] Inspect collision data: 1978–2016, MP vs. CHI; CHI effort jumps after 2005, so model MP only
+- [x] Light scores: date alignment checked; light-score dates = survey nights (2000+)
+- [x] Parse NOAA weather into nightly features; compute moon illumination
+- [x] Build nightly table (`scripts/build_nightly.py` → `data/processed/nightly.csv`)
+- [x] Exploratory plots + findings (`scripts/explore.py`, `reports/exploration.md`)
