@@ -1,0 +1,64 @@
+{
+  "formula": "C(season, levels=[\"fall\", \"spring\"]) + bs(season_day, knots=(15, 35, 55, 75, 125, 145, 160, 175, 190, 210), lower_bound=-1, upper_bound=224) + year_c + C(season, levels=[\"fall\", \"spring\"]):light_score + C(season, levels=[\"fall\", \"spring\"]):(wind_u + wind_v + wind_speed + temp_evening_c + temp_change_24h + pressure_change_24h + sky_cover + low_ceiling_frac + any_rain + moon_illum) + C(season, levels=[\"fall\", \"spring\"]):(tailwind_prev + rain_prev + temp_change_prev + nights_since_good)",
+  "train_years": [
+    2000,
+    2016
+  ],
+  "n_nights": 2645,
+  "alpha": 1.0335843978025328,
+  "level_cutoffs": [
+    1.79,
+    5.727,
+    12.693
+  ],
+  "light_score_range": [
+    3.0,
+    17.0
+  ],
+  "backtest": {
+    "scores": {
+      "calendar only": {
+        "log_score": -2.1258,
+        "spearman": 0.4186,
+        "worst_10pct_nights_flagged": 0.2371,
+        "birds_on_flagged_nights": 0.2354
+      },
+      "full model": {
+        "log_score": -1.9514,
+        "spearman": 0.6634,
+        "worst_10pct_nights_flagged": 0.4124,
+        "birds_on_flagged_nights": 0.358
+      }
+    },
+    "levels": {
+      "Low": {
+        "nights": 1324,
+        "share_of_nights": 0.5006,
+        "avg_birds": 0.7727,
+        "share_of_birds": 0.1101,
+        "share_of_worst_nights": 0.0412
+      },
+      "Moderate": {
+        "nights": 784,
+        "share_of_nights": 0.2964,
+        "avg_birds": 3.7806,
+        "share_of_birds": 0.3189,
+        "share_of_worst_nights": 0.3196
+      },
+      "High": {
+        "nights": 404,
+        "share_of_nights": 0.1527,
+        "avg_birds": 7.5668,
+        "share_of_birds": 0.329,
+        "share_of_worst_nights": 0.3643
+      },
+      "Extreme": {
+        "nights": 133,
+        "share_of_nights": 0.0503,
+        "avg_birds": 16.9098,
+        "share_of_birds": 0.242,
+        "share_of_worst_nights": 0.2749
+      }
+    }
+  }
+}

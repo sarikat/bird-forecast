@@ -1,18 +1,11 @@
 # Tasks
 
-## Now — Milestone 1: data + model
+## Now — Milestone 2: daily forecast
 
-- [ ] Fit negative binomial model on the analysis set (MP, 2000–2016, surveyed nights); check fit, overdispersion
-- [ ] Fall signal: try wind direction (sin/cos) and a cold-front feature, since the north–south tailwind misses it
-- [ ] Test interactions: tailwind × season, low clouds × big-flight nights
-- [ ] Decide what to do with 1978–1999 (no survey record): leave out, or use as a sensitivity check
-- [ ] Backtest on held-out years; pick Low/Moderate/High/Extreme cutoffs
-- [ ] Save fitted model to `models/`
-
-## Next — Milestone 2: daily forecast
-
-- [ ] Fetch tonight's hourly forecast from api.weather.gov
-- [ ] Map forecast fields to the model's features (note forecast vs. observed weather mismatch)
+- [ ] Fetch tonight's hourly forecast from the NWS gridpoint API (temperature, pressure, skyCover, ceilingHeight, wind, quantitativePrecipitation)
+- [ ] Fetch last night's observed weather (O'Hare) for the previous-night features
+- [ ] Map forecast fields to the same nightly features as `weather.nightly_features` → `features.add_derived`
+- [ ] Forecast with lights on (17) and off (3); risk level uses the lights-on number
 - [ ] Write `site/risk.json` for tonight + next 7 nights
 - [ ] Handle the off-season (no migration) gracefully
 
@@ -30,6 +23,9 @@
 
 ## Later
 
+- [ ] Upstream weather (e.g. St. Louis / Indianapolis in spring, Minneapolis / Green Bay in fall) as extra features
+- [ ] Sensitivity check using 1978–1999 (no survey-effort record)
+- [ ] Recalibrate the top end: the riskiest 10% of nights are over-predicted (16.1 forecast vs. 12.6 observed)
 - [ ] Animated wind map over the Great Lakes
 - [ ] Forecast-vs-actual track record
 - [ ] Email/text alerts on High/Extreme nights
@@ -46,3 +42,6 @@
 - [x] Parse NOAA weather into nightly features; compute moon illumination
 - [x] Build nightly table (`scripts/build_nightly.py` → `data/processed/nightly.csv`)
 - [x] Exploratory plots + findings (`scripts/explore.py`, `reports/exploration.md`)
+- [x] Negative binomial model with season-specific lights, weather and previous-night effects (`src/bird_forecast/model.py`)
+- [x] Leave-one-year-out backtest; risk levels at 50th/80th/95th percentiles (`scripts/train.py`, `reports/model.md`)
+- [x] Saved model (`models/collision_model.pkl` + `.json`) — formula + coefficients only

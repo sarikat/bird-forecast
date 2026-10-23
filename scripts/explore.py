@@ -10,41 +10,18 @@ Usage: uv run scripts/explore.py
 """
 
 import matplotlib
-
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from bird_forecast.paths import FIGURES, NIGHTLY_CSV
-
-# Reference palette (dataviz skill): categorical slots 1-3, light surface.
-SPRING, FALL = "#2a78d6", "#eb6834"
-MP, CHI = "#2a78d6", "#1baf7a"
-SEASON_COLORS = {"spring": SPRING, "fall": FALL}
-SEASON_TINTS = {"spring": "#9ec5f4", "fall": "#f5b195"}  # interval bars
-SURFACE, INK, INK_2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e4e3df"
-
-plt.rcParams.update({
-    "figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "savefig.facecolor": SURFACE,
-    "axes.edgecolor": GRID, "axes.labelcolor": INK_2, "axes.titlecolor": INK,
-    "axes.titlesize": 11, "axes.titleweight": "bold", "axes.titlelocation": "left",
-    "axes.labelsize": 9, "axes.grid": True, "axes.axisbelow": True, "grid.color": GRID, "grid.linewidth": 0.6,
-    "axes.spines.top": False, "axes.spines.right": False,
-    "xtick.color": INK_2, "ytick.color": INK_2, "xtick.labelsize": 8, "ytick.labelsize": 8,
-    "legend.frameon": False, "legend.fontsize": 8, "font.size": 9, "lines.linewidth": 2,
-})
+from bird_forecast.paths import NIGHTLY_CSV
+from bird_forecast.plotstyle import (
+    CHI, GRID, INK, INK_2, MP, SEASON_COLORS, SEASON_TINTS, SURFACE, save,
+)
 
 BASELINE_WINDOW_DAYS = 15
 BOOTSTRAP_REPS = 1000
 rng = np.random.default_rng(0)
-
-
-def save(fig, name: str) -> None:
-    FIGURES.mkdir(parents=True, exist_ok=True)
-    fig.savefig(FIGURES / name, dpi=160, bbox_inches="tight")
-    plt.close(fig)
-    print(f"  wrote {name}")
 
 
 def add_baseline(n: pd.DataFrame) -> pd.DataFrame:

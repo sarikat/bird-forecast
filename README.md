@@ -28,4 +28,18 @@ on decades of Chicago building-collision records, and publishes a risk level
 
 ```bash
 uv sync
+uv run scripts/download_weather.py   # NOAA hourly weather, 1978–2019
+# Collision data: download by hand from https://doi.org/10.5061/dryad.8rr0498
+# (Chicago_collision_data.csv, Light_levels_dryad.csv) into data/raw/winger2019/
+uv run scripts/build_nightly.py      # one row per migration night
+uv run scripts/explore.py            # exploratory figures
+uv run scripts/train.py              # backtest + fit + save the model
+uv run pytest
 ```
+
+## Findings so far
+
+- [First look at the data](reports/exploration.md)
+- [The collision model](reports/model.md): building lights are the biggest factor (3–6×),
+  then spring south winds and west winds in both seasons. On held-out years, nights rated
+  High or Extreme were 20% of nights but 57% of birds.
