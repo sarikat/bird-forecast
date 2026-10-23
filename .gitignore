@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.DS_Store
+# downloaded/derived data is reproducible from scripts; don't commit it
+data/raw/*
+data/processed/*
+!data/**/.gitkeep
