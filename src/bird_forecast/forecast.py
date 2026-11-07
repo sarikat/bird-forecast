@@ -49,15 +49,80 @@ def wind_label(u: float, v: float, speed: float) -> str:
     return f"{COMPASS[int((from_deg + 22.5) // 45) % 8]} at {speed:.0f} m/s"
 
 
-def drivers(fitted: model.FittedModel, night: pd.DataFrame, typical: dict[str, float]) -> list[dict]:
+def driver_detail(group: str, row: pd.Series) -> str:
+    """What tonight's inputs for a driver group actually are, in plain words."""
+    if group == "wind":
+        return wind_label(row["wind_u"], row["wind_v"], row["wind_speed"])
+    if group == "temperature":
+        change = row["temp_change_24h"]
+        trend = "" if pd.isna(change) else f", {change:+.0f} °C vs. last evening"
+        return f"{row['temp_evening_c']:.0f} °C in the evening{trend}"
+    if group == "clouds and rain":
+        sky = "" if pd.isna(row["sky_cover"]) else f"{100 * row['sky_cover']:.0f}% cloud"
+        rain = "rain unknown" if pd.isna(row["precip_mm"]) else ("rain" if row["any_rain"] else "dry")
+        return ", ".join(s for s in (sky, rain) if s)
+    if group == "moon":
+        return f"{100 * row['moon_illum']:.0f}% lit"
+    since = int(row["nights_since_good"])
+    if since == 0:
+        return "last night was a good flying night"
+    if since >= features.NIGHTS_SINCE_CAP:
+        return f"no good flying night in {since}+ nights"
+    return f"{since} night{'s' if since > 1 else ''} since a good flying night"
+
+
+def drivers(fitted: model.FittedModel, night: pd.DataFrame, typical: pd.DataFrame) -> list[dict]:
+    """Every driver group's effect on tonight vs. a typical night for the date
+    (`typical`: the same night with typical weather), biggest first."""
     mu = float(fitted.predict(night).iloc[0])
+    row = night.iloc[0]
     out = []
     for group, columns in DRIVER_GROUPS.items():
-        swapped = night.assign(**{c: typical[c] for c in columns})
+        swapped = night.assign(**{c: typical[c].to_numpy() for c in columns})
         ratio = mu / float(fitted.predict(swapped).iloc[0])
-        if ratio >= DRIVER_THRESHOLD or ratio <= 1 / DRIVER_THRESHOLD:
-            out.append({"factor": group, "effect": round(ratio, 2)})
+        out.append({
+            "factor": group,
+            "effect": round(ratio, 2),
+            "detail": driver_detail(group, row),
+            "notable": bool(ratio >= DRIVER_THRESHOLD or ratio <= 1 / DRIVER_THRESHOLD),
+        })
     return sorted(out, key=lambda d: -abs(np.log(d["effect"])))
+
+
+def headline(entry: dict) -> str:
+    notable = [d for d in entry["drivers"] if d["notable"]][:2]
+    if not notable:
+        return "Close to a typical night for this date."
+    parts = []
+    for d in notable:
+        change = "raises risk" if d["effect"] > 1 else "lowers risk to"
+        parts.append(f"{d['factor'].capitalize()} ({d['detail']}) {change} {d['effect']:.1f}×")
+    return "; ".join(parts) + "."
+
+
+def next_season_start(now: pd.Timestamp) -> str | None:
+    """First night of the next season the model covers, or None if tonight is in one."""
+    _, meta = model.load()
+    start = first_night(now)
+    dates = pd.date_range(start, periods=366)
+    nights = pd.DataFrame({"date": dates, "season": features.season_of(pd.Series(dates))})
+    ok = nights["season"].notna()
+    ok[ok] = model.covered(meta, nights[ok])
+    first = dates[ok.to_numpy().argmax()]
+    return None if first == start else f"{first:%Y-%m-%d}"
+
+
+def season_curve(year: int, season: str) -> list[dict]:
+    """Expected birds on a typical-weather night with lights on, for every
+    night of one season: the backdrop the forecast nights are drawn against."""
+    fitted, meta = model.load()
+    months = features.SEASON_MONTHS[season]
+    dates = pd.date_range(f"{year}-{months[0]:02d}-01", pd.Timestamp(f"{year}-{months[-1]:02d}-01") + pd.offsets.MonthEnd(1))
+    nights = pd.DataFrame({"date": dates, "season": season, "light_score": LIGHTS_ON})
+    nights = nights[model.covered(meta, nights)]
+    dates = nights["date"]
+    mu = fitted.predict(model.typical_for(meta, nights)).to_numpy()
+    return [{"morning": f"{d:%Y-%m-%d}", "typical": round(float(m), 2)} for d, m in zip(dates, mu)]
 
 
 def forecast_nights(hourly: pd.DataFrame, now: pd.Timestamp, n_nights: int = 7) -> list[dict]:
@@ -86,7 +151,7 @@ def forecast_nights(hourly: pd.DataFrame, now: pd.Timestamp, n_nights: int = 7) 
                 "moon_pct": round(100 * row["moon_illum"]),
             },
         }
-        if entry["season"] is None:
+        if entry["season"] is None or not model.covered(meta, night).iloc[0]:
             entry["in_season"] = False
             results.append(entry)
             continue
@@ -95,8 +160,8 @@ def forecast_nights(hourly: pd.DataFrame, now: pd.Timestamp, n_nights: int = 7) 
         off = night.assign(light_score=LIGHTS_OFF)
         mu_on = float(fitted.predict(on).iloc[0])
         mu_off = float(fitted.predict(off).iloc[0])
-        typical = meta.typical[entry["season"]]
-        mu_typical = float(fitted.predict(on.assign(**typical)).iloc[0])
+        typical = model.typical_for(meta, on)
+        mu_typical = float(fitted.predict(typical).iloc[0])
         lo, hi = model.predictive_quantiles(np.array([mu_on]), meta.alpha, [0.1, 0.9])[0]
         entry.update({
             "in_season": True,
@@ -110,5 +175,6 @@ def forecast_nights(hourly: pd.DataFrame, now: pd.Timestamp, n_nights: int = 7) 
             "vs_typical": round(mu_on / mu_typical, 2),
             "drivers": drivers(fitted, on, typical),
         })
+        entry["headline"] = headline(entry)
         results.append(entry)
     return results

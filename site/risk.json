@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T20:51:04+00:00",
+  "generated_at": "2026-11-07T20:58:35+00:00",
   "nws_forecast_updated": "2026-11-07T20:26:07+00:00",
   "location": "McCormick Place, Chicago",
   "weather_source": "NWS forecast grid LOT/66,77 and observations at KORD",
@@ -43,14 +43,41 @@
         "expected": 0.9,
         "level": "Low"
       },
-      "typical_for_date": 2.3,
-      "vs_typical": 1.27,
+      "typical_for_date": 2.2,
+      "vs_typical": 1.29,
       "drivers": [
         {
           "factor": "wind",
-          "effect": 1.48
+          "effect": 1.36,
+          "detail": "SW at 4 m/s",
+          "notable": true
+        },
+        {
+          "factor": "temperature",
+          "effect": 0.92,
+          "detail": "6 \u00b0C in the evening, +1 \u00b0C vs. last evening",
+          "notable": false
+        },
+        {
+          "factor": "clouds and rain",
+          "effect": 1.06,
+          "detail": "28% cloud, dry",
+          "notable": false
+        },
+        {
+          "factor": "recent nights",
+          "effect": 0.96,
+          "detail": "1 night since a good flying night",
+          "notable": false
+        },
+        {
+          "factor": "moon",
+          "effect": 1.01,
+          "detail": "3% lit",
+          "notable": false
         }
-      ]
+      ],
+      "headline": "Wind (SW at 4 m/s) raises risk 1.4\u00d7."
     },
     {
       "night_of": "2026-11-08",
@@ -78,18 +105,41 @@
         "expected": 0.8,
         "level": "Low"
       },
-      "typical_for_date": 2.2,
-      "vs_typical": 1.13,
+      "typical_for_date": 2.1,
+      "vs_typical": 1.18,
       "drivers": [
         {
           "factor": "wind",
-          "effect": 1.42
+          "effect": 1.34,
+          "detail": "NW at 3 m/s",
+          "notable": true
         },
         {
           "factor": "temperature",
-          "effect": 0.8
+          "effect": 0.89,
+          "detail": "9 \u00b0C in the evening, +3 \u00b0C vs. last evening",
+          "notable": false
+        },
+        {
+          "factor": "recent nights",
+          "effect": 0.9,
+          "detail": "2 nights since a good flying night",
+          "notable": false
+        },
+        {
+          "factor": "clouds and rain",
+          "effect": 1.1,
+          "detail": "14% cloud, dry",
+          "notable": false
+        },
+        {
+          "factor": "moon",
+          "effect": 1.01,
+          "detail": "1% lit",
+          "notable": false
         }
-      ]
+      ],
+      "headline": "Wind (NW at 3 m/s) raises risk 1.3\u00d7."
     },
     {
       "night_of": "2026-11-09",
@@ -117,14 +167,41 @@
         "expected": 0.8,
         "level": "Low"
       },
-      "typical_for_date": 2.1,
-      "vs_typical": 1.16,
+      "typical_for_date": 2.0,
+      "vs_typical": 1.25,
       "drivers": [
         {
           "factor": "wind",
-          "effect": 1.38
+          "effect": 1.31,
+          "detail": "SW at 4 m/s",
+          "notable": true
+        },
+        {
+          "factor": "recent nights",
+          "effect": 0.9,
+          "detail": "3 nights since a good flying night",
+          "notable": false
+        },
+        {
+          "factor": "clouds and rain",
+          "effect": 1.1,
+          "detail": "20% cloud, dry",
+          "notable": false
+        },
+        {
+          "factor": "temperature",
+          "effect": 0.96,
+          "detail": "11 \u00b0C in the evening, +2 \u00b0C vs. last evening",
+          "notable": false
+        },
+        {
+          "factor": "moon",
+          "effect": 1.01,
+          "detail": "0% lit",
+          "notable": false
         }
-      ]
+      ],
+      "headline": "Wind (SW at 4 m/s) raises risk 1.3\u00d7."
     },
     {
       "night_of": "2026-11-10",
@@ -152,9 +229,41 @@
         "expected": 0.8,
         "level": "Low"
       },
-      "typical_for_date": 2.1,
-      "vs_typical": 1.17,
-      "drivers": []
+      "typical_for_date": 1.9,
+      "vs_typical": 1.28,
+      "drivers": [
+        {
+          "factor": "wind",
+          "effect": 1.13,
+          "detail": "light and variable",
+          "notable": false
+        },
+        {
+          "factor": "temperature",
+          "effect": 1.09,
+          "detail": "9 \u00b0C in the evening, -2 \u00b0C vs. last evening",
+          "notable": false
+        },
+        {
+          "factor": "clouds and rain",
+          "effect": 1.06,
+          "detail": "38% cloud, rain unknown",
+          "notable": false
+        },
+        {
+          "factor": "recent nights",
+          "effect": 0.98,
+          "detail": "4 nights since a good flying night",
+          "notable": false
+        },
+        {
+          "factor": "moon",
+          "effect": 1.01,
+          "detail": "2% lit",
+          "notable": false
+        }
+      ],
+      "headline": "Close to a typical night for this date."
     },
     {
       "night_of": "2026-11-11",
@@ -182,9 +291,41 @@
         "expected": 0.6,
         "level": "Low"
       },
-      "typical_for_date": 2.1,
-      "vs_typical": 1.0,
-      "drivers": []
+      "typical_for_date": 1.9,
+      "vs_typical": 1.1,
+      "drivers": [
+        {
+          "factor": "recent nights",
+          "effect": 1.21,
+          "detail": "5 nights since a good flying night",
+          "notable": false
+        },
+        {
+          "factor": "wind",
+          "effect": 0.9,
+          "detail": "N at 4 m/s",
+          "notable": false
+        },
+        {
+          "factor": "clouds and rain",
+          "effect": 0.96,
+          "detail": "68% cloud, rain unknown",
+          "notable": false
+        },
+        {
+          "factor": "temperature",
+          "effect": 1.04,
+          "detail": "9 \u00b0C in the evening, -0 \u00b0C vs. last evening",
+          "notable": false
+        },
+        {
+          "factor": "moon",
+          "effect": 1.01,
+          "detail": "6% lit",
+          "notable": false
+        }
+      ],
+      "headline": "Close to a typical night for this date."
     },
     {
       "night_of": "2026-11-12",
@@ -212,9 +353,41 @@
         "expected": 0.5,
         "level": "Low"
       },
-      "typical_for_date": 2.0,
-      "vs_typical": 0.82,
-      "drivers": []
+      "typical_for_date": 1.9,
+      "vs_typical": 0.88,
+      "drivers": [
+        {
+          "factor": "recent nights",
+          "effect": 0.86,
+          "detail": "last night was a good flying night",
+          "notable": false
+        },
+        {
+          "factor": "temperature",
+          "effect": 1.16,
+          "detail": "5 \u00b0C in the evening, -4 \u00b0C vs. last evening",
+          "notable": false
+        },
+        {
+          "factor": "wind",
+          "effect": 0.9,
+          "detail": "N at 5 m/s",
+          "notable": false
+        },
+        {
+          "factor": "clouds and rain",
+          "effect": 0.98,
+          "detail": "62% cloud, rain unknown",
+          "notable": false
+        },
+        {
+          "factor": "moon",
+          "effect": 1.01,
+          "detail": "12% lit",
+          "notable": false
+        }
+      ],
+      "headline": "Close to a typical night for this date."
     },
     {
       "night_of": "2026-11-13",
@@ -242,9 +415,872 @@
         "expected": 0.7,
         "level": "Low"
       },
-      "typical_for_date": 2.0,
-      "vs_typical": 1.12,
-      "drivers": []
+      "typical_for_date": 1.8,
+      "vs_typical": 1.23,
+      "drivers": [
+        {
+          "factor": "wind",
+          "effect": 1.17,
+          "detail": "NW at 3 m/s",
+          "notable": false
+        },
+        {
+          "factor": "clouds and rain",
+          "effect": 1.06,
+          "detail": "40% cloud, rain unknown",
+          "notable": false
+        },
+        {
+          "factor": "temperature",
+          "effect": 0.98,
+          "detail": "4 \u00b0C in the evening, -1 \u00b0C vs. last evening",
+          "notable": false
+        },
+        {
+          "factor": "recent nights",
+          "effect": 1.01,
+          "detail": "last night was a good flying night",
+          "notable": false
+        },
+        {
+          "factor": "moon",
+          "effect": 1.0,
+          "detail": "19% lit",
+          "notable": false
+        }
+      ],
+      "headline": "Close to a typical night for this date."
     }
-  ]
+  ],
+  "next_season_start": null,
+  "season_curves": {
+    "spring": [
+      {
+        "morning": "2026-03-01",
+        "typical": 0.2
+      },
+      {
+        "morning": "2026-03-02",
+        "typical": 0.31
+      },
+      {
+        "morning": "2026-03-03",
+        "typical": 0.48
+      },
+      {
+        "morning": "2026-03-04",
+        "typical": 0.67
+      },
+      {
+        "morning": "2026-03-05",
+        "typical": 0.96
+      },
+      {
+        "morning": "2026-03-06",
+        "typical": 1.22
+      },
+      {
+        "morning": "2026-03-07",
+        "typical": 1.41
+      },
+      {
+        "morning": "2026-03-08",
+        "typical": 1.71
+      },
+      {
+        "morning": "2026-03-09",
+        "typical": 1.98
+      },
+      {
+        "morning": "2026-03-10",
+        "typical": 2.14
+      },
+      {
+        "morning": "2026-03-11",
+        "typical": 2.34
+      },
+      {
+        "morning": "2026-03-12",
+        "typical": 2.55
+      },
+      {
+        "morning": "2026-03-13",
+        "typical": 2.65
+      },
+      {
+        "morning": "2026-03-14",
+        "typical": 2.71
+      },
+      {
+        "morning": "2026-03-15",
+        "typical": 2.75
+      },
+      {
+        "morning": "2026-03-16",
+        "typical": 2.82
+      },
+      {
+        "morning": "2026-03-17",
+        "typical": 2.67
+      },
+      {
+        "morning": "2026-03-18",
+        "typical": 2.47
+      },
+      {
+        "morning": "2026-03-19",
+        "typical": 2.3
+      },
+      {
+        "morning": "2026-03-20",
+        "typical": 2.19
+      },
+      {
+        "morning": "2026-03-21",
+        "typical": 2.11
+      },
+      {
+        "morning": "2026-03-22",
+        "typical": 2.05
+      },
+      {
+        "morning": "2026-03-23",
+        "typical": 1.87
+      },
+      {
+        "morning": "2026-03-24",
+        "typical": 1.97
+      },
+      {
+        "morning": "2026-03-25",
+        "typical": 2.0
+      },
+      {
+        "morning": "2026-03-26",
+        "typical": 1.98
+      },
+      {
+        "morning": "2026-03-27",
+        "typical": 1.91
+      },
+      {
+        "morning": "2026-03-28",
+        "typical": 1.85
+      },
+      {
+        "morning": "2026-03-29",
+        "typical": 1.83
+      },
+      {
+        "morning": "2026-03-30",
+        "typical": 1.74
+      },
+      {
+        "morning": "2026-03-31",
+        "typical": 1.7
+      },
+      {
+        "morning": "2026-04-01",
+        "typical": 1.69
+      },
+      {
+        "morning": "2026-04-02",
+        "typical": 1.7
+      },
+      {
+        "morning": "2026-04-03",
+        "typical": 1.66
+      },
+      {
+        "morning": "2026-04-04",
+        "typical": 1.67
+      },
+      {
+        "morning": "2026-04-05",
+        "typical": 1.75
+      },
+      {
+        "morning": "2026-04-06",
+        "typical": 1.76
+      },
+      {
+        "morning": "2026-04-07",
+        "typical": 1.81
+      },
+      {
+        "morning": "2026-04-08",
+        "typical": 1.78
+      },
+      {
+        "morning": "2026-04-09",
+        "typical": 1.8
+      },
+      {
+        "morning": "2026-04-10",
+        "typical": 1.85
+      },
+      {
+        "morning": "2026-04-11",
+        "typical": 1.93
+      },
+      {
+        "morning": "2026-04-12",
+        "typical": 1.96
+      },
+      {
+        "morning": "2026-04-13",
+        "typical": 2.03
+      },
+      {
+        "morning": "2026-04-14",
+        "typical": 2.09
+      },
+      {
+        "morning": "2026-04-15",
+        "typical": 2.11
+      },
+      {
+        "morning": "2026-04-16",
+        "typical": 2.12
+      },
+      {
+        "morning": "2026-04-17",
+        "typical": 2.23
+      },
+      {
+        "morning": "2026-04-18",
+        "typical": 2.36
+      },
+      {
+        "morning": "2026-04-19",
+        "typical": 2.41
+      },
+      {
+        "morning": "2026-04-20",
+        "typical": 2.48
+      },
+      {
+        "morning": "2026-04-21",
+        "typical": 2.53
+      },
+      {
+        "morning": "2026-04-22",
+        "typical": 2.6
+      },
+      {
+        "morning": "2026-04-23",
+        "typical": 2.7
+      },
+      {
+        "morning": "2026-04-24",
+        "typical": 2.83
+      },
+      {
+        "morning": "2026-04-25",
+        "typical": 2.95
+      },
+      {
+        "morning": "2026-04-26",
+        "typical": 3.06
+      },
+      {
+        "morning": "2026-04-27",
+        "typical": 3.29
+      },
+      {
+        "morning": "2026-04-28",
+        "typical": 3.41
+      },
+      {
+        "morning": "2026-04-29",
+        "typical": 3.62
+      },
+      {
+        "morning": "2026-04-30",
+        "typical": 4.03
+      },
+      {
+        "morning": "2026-05-01",
+        "typical": 4.44
+      },
+      {
+        "morning": "2026-05-02",
+        "typical": 4.83
+      },
+      {
+        "morning": "2026-05-03",
+        "typical": 5.05
+      },
+      {
+        "morning": "2026-05-04",
+        "typical": 5.17
+      },
+      {
+        "morning": "2026-05-05",
+        "typical": 5.03
+      },
+      {
+        "morning": "2026-05-06",
+        "typical": 5.26
+      },
+      {
+        "morning": "2026-05-07",
+        "typical": 5.36
+      },
+      {
+        "morning": "2026-05-08",
+        "typical": 5.34
+      },
+      {
+        "morning": "2026-05-09",
+        "typical": 5.02
+      },
+      {
+        "morning": "2026-05-10",
+        "typical": 4.76
+      },
+      {
+        "morning": "2026-05-11",
+        "typical": 4.44
+      },
+      {
+        "morning": "2026-05-12",
+        "typical": 4.17
+      },
+      {
+        "morning": "2026-05-13",
+        "typical": 3.91
+      },
+      {
+        "morning": "2026-05-14",
+        "typical": 3.62
+      },
+      {
+        "morning": "2026-05-15",
+        "typical": 3.38
+      },
+      {
+        "morning": "2026-05-16",
+        "typical": 3.12
+      },
+      {
+        "morning": "2026-05-17",
+        "typical": 2.76
+      },
+      {
+        "morning": "2026-05-18",
+        "typical": 2.4
+      },
+      {
+        "morning": "2026-05-19",
+        "typical": 2.21
+      },
+      {
+        "morning": "2026-05-20",
+        "typical": 2.11
+      },
+      {
+        "morning": "2026-05-21",
+        "typical": 1.93
+      },
+      {
+        "morning": "2026-05-22",
+        "typical": 1.72
+      },
+      {
+        "morning": "2026-05-23",
+        "typical": 1.46
+      },
+      {
+        "morning": "2026-05-24",
+        "typical": 1.37
+      },
+      {
+        "morning": "2026-05-25",
+        "typical": 1.25
+      },
+      {
+        "morning": "2026-05-26",
+        "typical": 1.12
+      },
+      {
+        "morning": "2026-05-27",
+        "typical": 0.98
+      },
+      {
+        "morning": "2026-05-28",
+        "typical": 0.86
+      },
+      {
+        "morning": "2026-05-29",
+        "typical": 0.76
+      },
+      {
+        "morning": "2026-05-30",
+        "typical": 0.66
+      },
+      {
+        "morning": "2026-05-31",
+        "typical": 0.57
+      }
+    ],
+    "fall": [
+      {
+        "morning": "2026-08-09",
+        "typical": 0.95
+      },
+      {
+        "morning": "2026-08-10",
+        "typical": 0.86
+      },
+      {
+        "morning": "2026-08-11",
+        "typical": 0.78
+      },
+      {
+        "morning": "2026-08-12",
+        "typical": 0.72
+      },
+      {
+        "morning": "2026-08-13",
+        "typical": 0.7
+      },
+      {
+        "morning": "2026-08-14",
+        "typical": 0.68
+      },
+      {
+        "morning": "2026-08-15",
+        "typical": 0.62
+      },
+      {
+        "morning": "2026-08-16",
+        "typical": 0.58
+      },
+      {
+        "morning": "2026-08-17",
+        "typical": 0.59
+      },
+      {
+        "morning": "2026-08-18",
+        "typical": 0.55
+      },
+      {
+        "morning": "2026-08-19",
+        "typical": 0.53
+      },
+      {
+        "morning": "2026-08-20",
+        "typical": 0.53
+      },
+      {
+        "morning": "2026-08-21",
+        "typical": 0.53
+      },
+      {
+        "morning": "2026-08-22",
+        "typical": 0.53
+      },
+      {
+        "morning": "2026-08-23",
+        "typical": 0.56
+      },
+      {
+        "morning": "2026-08-24",
+        "typical": 0.55
+      },
+      {
+        "morning": "2026-08-25",
+        "typical": 0.57
+      },
+      {
+        "morning": "2026-08-26",
+        "typical": 0.6
+      },
+      {
+        "morning": "2026-08-27",
+        "typical": 0.65
+      },
+      {
+        "morning": "2026-08-28",
+        "typical": 0.71
+      },
+      {
+        "morning": "2026-08-29",
+        "typical": 0.73
+      },
+      {
+        "morning": "2026-08-30",
+        "typical": 0.81
+      },
+      {
+        "morning": "2026-08-31",
+        "typical": 0.9
+      },
+      {
+        "morning": "2026-09-01",
+        "typical": 1.02
+      },
+      {
+        "morning": "2026-09-02",
+        "typical": 1.16
+      },
+      {
+        "morning": "2026-09-03",
+        "typical": 1.33
+      },
+      {
+        "morning": "2026-09-04",
+        "typical": 1.52
+      },
+      {
+        "morning": "2026-09-05",
+        "typical": 1.76
+      },
+      {
+        "morning": "2026-09-06",
+        "typical": 2.05
+      },
+      {
+        "morning": "2026-09-07",
+        "typical": 2.35
+      },
+      {
+        "morning": "2026-09-08",
+        "typical": 2.66
+      },
+      {
+        "morning": "2026-09-09",
+        "typical": 3.0
+      },
+      {
+        "morning": "2026-09-10",
+        "typical": 3.37
+      },
+      {
+        "morning": "2026-09-11",
+        "typical": 3.67
+      },
+      {
+        "morning": "2026-09-12",
+        "typical": 3.75
+      },
+      {
+        "morning": "2026-09-13",
+        "typical": 4.08
+      },
+      {
+        "morning": "2026-09-14",
+        "typical": 4.73
+      },
+      {
+        "morning": "2026-09-15",
+        "typical": 5.02
+      },
+      {
+        "morning": "2026-09-16",
+        "typical": 5.26
+      },
+      {
+        "morning": "2026-09-17",
+        "typical": 5.48
+      },
+      {
+        "morning": "2026-09-18",
+        "typical": 5.55
+      },
+      {
+        "morning": "2026-09-19",
+        "typical": 5.64
+      },
+      {
+        "morning": "2026-09-20",
+        "typical": 5.66
+      },
+      {
+        "morning": "2026-09-21",
+        "typical": 5.62
+      },
+      {
+        "morning": "2026-09-22",
+        "typical": 5.61
+      },
+      {
+        "morning": "2026-09-23",
+        "typical": 5.49
+      },
+      {
+        "morning": "2026-09-24",
+        "typical": 5.12
+      },
+      {
+        "morning": "2026-09-25",
+        "typical": 5.08
+      },
+      {
+        "morning": "2026-09-26",
+        "typical": 5.05
+      },
+      {
+        "morning": "2026-09-27",
+        "typical": 5.07
+      },
+      {
+        "morning": "2026-09-28",
+        "typical": 5.12
+      },
+      {
+        "morning": "2026-09-29",
+        "typical": 5.22
+      },
+      {
+        "morning": "2026-09-30",
+        "typical": 5.35
+      },
+      {
+        "morning": "2026-10-01",
+        "typical": 5.49
+      },
+      {
+        "morning": "2026-10-02",
+        "typical": 5.9
+      },
+      {
+        "morning": "2026-10-03",
+        "typical": 6.31
+      },
+      {
+        "morning": "2026-10-04",
+        "typical": 6.71
+      },
+      {
+        "morning": "2026-10-05",
+        "typical": 7.11
+      },
+      {
+        "morning": "2026-10-06",
+        "typical": 7.62
+      },
+      {
+        "morning": "2026-10-07",
+        "typical": 8.27
+      },
+      {
+        "morning": "2026-10-08",
+        "typical": 9.08
+      },
+      {
+        "morning": "2026-10-09",
+        "typical": 9.57
+      },
+      {
+        "morning": "2026-10-10",
+        "typical": 10.26
+      },
+      {
+        "morning": "2026-10-11",
+        "typical": 11.1
+      },
+      {
+        "morning": "2026-10-12",
+        "typical": 11.61
+      },
+      {
+        "morning": "2026-10-13",
+        "typical": 12.16
+      },
+      {
+        "morning": "2026-10-14",
+        "typical": 12.54
+      },
+      {
+        "morning": "2026-10-15",
+        "typical": 13.36
+      },
+      {
+        "morning": "2026-10-16",
+        "typical": 13.23
+      },
+      {
+        "morning": "2026-10-17",
+        "typical": 11.94
+      },
+      {
+        "morning": "2026-10-18",
+        "typical": 10.89
+      },
+      {
+        "morning": "2026-10-19",
+        "typical": 10.13
+      },
+      {
+        "morning": "2026-10-20",
+        "typical": 9.56
+      },
+      {
+        "morning": "2026-10-21",
+        "typical": 8.73
+      },
+      {
+        "morning": "2026-10-22",
+        "typical": 8.12
+      },
+      {
+        "morning": "2026-10-23",
+        "typical": 7.2
+      },
+      {
+        "morning": "2026-10-24",
+        "typical": 6.38
+      },
+      {
+        "morning": "2026-10-25",
+        "typical": 5.65
+      },
+      {
+        "morning": "2026-10-26",
+        "typical": 5.08
+      },
+      {
+        "morning": "2026-10-27",
+        "typical": 4.64
+      },
+      {
+        "morning": "2026-10-28",
+        "typical": 4.16
+      },
+      {
+        "morning": "2026-10-29",
+        "typical": 3.8
+      },
+      {
+        "morning": "2026-10-30",
+        "typical": 3.49
+      },
+      {
+        "morning": "2026-10-31",
+        "typical": 3.2
+      },
+      {
+        "morning": "2026-11-01",
+        "typical": 3.0
+      },
+      {
+        "morning": "2026-11-02",
+        "typical": 2.83
+      },
+      {
+        "morning": "2026-11-03",
+        "typical": 2.67
+      },
+      {
+        "morning": "2026-11-04",
+        "typical": 2.48
+      },
+      {
+        "morning": "2026-11-05",
+        "typical": 2.39
+      },
+      {
+        "morning": "2026-11-06",
+        "typical": 2.24
+      },
+      {
+        "morning": "2026-11-07",
+        "typical": 2.28
+      },
+      {
+        "morning": "2026-11-08",
+        "typical": 2.23
+      },
+      {
+        "morning": "2026-11-09",
+        "typical": 2.09
+      },
+      {
+        "morning": "2026-11-10",
+        "typical": 2.0
+      },
+      {
+        "morning": "2026-11-11",
+        "typical": 1.91
+      },
+      {
+        "morning": "2026-11-12",
+        "typical": 1.87
+      },
+      {
+        "morning": "2026-11-13",
+        "typical": 1.89
+      },
+      {
+        "morning": "2026-11-14",
+        "typical": 1.82
+      },
+      {
+        "morning": "2026-11-15",
+        "typical": 1.75
+      },
+      {
+        "morning": "2026-11-16",
+        "typical": 1.76
+      },
+      {
+        "morning": "2026-11-17",
+        "typical": 1.69
+      },
+      {
+        "morning": "2026-11-18",
+        "typical": 1.69
+      },
+      {
+        "morning": "2026-11-19",
+        "typical": 1.71
+      },
+      {
+        "morning": "2026-11-20",
+        "typical": 1.68
+      },
+      {
+        "morning": "2026-11-21",
+        "typical": 1.65
+      },
+      {
+        "morning": "2026-11-22",
+        "typical": 1.59
+      },
+      {
+        "morning": "2026-11-23",
+        "typical": 1.58
+      },
+      {
+        "morning": "2026-11-24",
+        "typical": 1.56
+      },
+      {
+        "morning": "2026-11-25",
+        "typical": 1.42
+      },
+      {
+        "morning": "2026-11-26",
+        "typical": 1.32
+      },
+      {
+        "morning": "2026-11-27",
+        "typical": 1.11
+      },
+      {
+        "morning": "2026-11-28",
+        "typical": 0.9
+      },
+      {
+        "morning": "2026-11-29",
+        "typical": 0.76
+      },
+      {
+        "morning": "2026-11-30",
+        "typical": 0.59
+      }
+    ]
+  }
 }

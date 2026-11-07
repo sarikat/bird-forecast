@@ -78,6 +78,52 @@ def prepare(nights: pd.DataFrame) -> pd.DataFrame:
     return nights.assign(year_c=year - 2008, season_day=season_day)
 
 
+WEATHER_PREDICTORS = [c for c in PREDICTORS if c not in ("season", "season_day", "year_c", "light_score")]
+TYPICAL_WINDOW_DAYS = 7  # typical weather for a date = median of nights within a week of it
+
+
+def typical_weather(data: pd.DataFrame) -> dict[str, list[dict]]:
+    """Median weather for each season day, from training nights within a week
+    of it: 'typical for the date', since mid-March and mid-May differ a lot."""
+    out = {}
+    for season, g in data.groupby("season"):
+        rows = []
+        for day in range(int(g["season_day"].min()), int(g["season_day"].max()) + 1):
+            near = g[(g["season_day"] - day).abs() <= TYPICAL_WINDOW_DAYS]
+            rows.append({"season_day": day, **near[WEATHER_PREDICTORS].median().round(3).to_dict()})
+        out[season] = rows
+    return out
+
+
+COVERAGE_SLACK_DAYS = 3
+
+
+def covered(meta: "ModelMeta", nights: pd.DataFrame) -> pd.Series:
+    """Whether each night falls within the dates the model was trained on.
+    (Fall training nights start around Aug 11; before that it would be
+    extrapolating.)"""
+    nights = prepare(nights)
+    out = pd.Series(False, index=nights.index)
+    for season, rows in meta.typical.items():
+        first, last = rows[0]["season_day"], rows[-1]["season_day"]
+        mask = nights["season"] == season
+        days = nights.loc[mask, "season_day"]
+        out[mask] = days.between(first - COVERAGE_SLACK_DAYS, last + COVERAGE_SLACK_DAYS)
+    return out
+
+
+def typical_for(meta: "ModelMeta", nights: pd.DataFrame) -> pd.DataFrame:
+    """Each night with its weather replaced by typical weather for its date."""
+    nights = prepare(nights)
+    out = nights.copy()
+    for season, rows in meta.typical.items():
+        table = pd.DataFrame(rows).set_index("season_day")
+        mask = nights["season"] == season
+        days = nights.loc[mask, "season_day"].clip(table.index.min(), table.index.max())
+        out.loc[mask, WEATHER_PREDICTORS] = table.loc[days, WEATHER_PREDICTORS].to_numpy()
+    return out
+
+
 def analysis_set(nights: pd.DataFrame) -> pd.DataFrame:
     """Surveyed McCormick Place nights in the training years with complete predictors."""
     n = nights[nights["surveyed"] & nights["year"].between(*TRAIN_YEARS)]
@@ -123,9 +169,9 @@ class ModelMeta:
     level_cutoffs: list[float]
     light_score_range: tuple[float, float]
     backtest: dict
-    # Median of each weather predictor per season in the training data: the
-    # "typical night" that forecasts are compared against to explain them.
-    typical: dict[str, dict[str, float]]
+    # Typical weather for each season day (see typical_weather): the "typical
+    # night for the date" that forecasts are compared against to explain them.
+    typical: dict[str, list[dict]]
 
 
 class FittedModel:

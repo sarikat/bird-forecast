@@ -35,6 +35,7 @@ uv run scripts/build_nightly.py      # one row per migration night
 uv run scripts/explore.py            # exploratory figures
 uv run scripts/train.py              # backtest + fit + save the model
 uv run scripts/forecast.py           # live forecast for the next 7 nights -> site/risk.json
+cd site && python -m http.server     # view the website at http://localhost:8000
 uv run pytest
 ```
 

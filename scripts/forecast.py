@@ -16,6 +16,12 @@ from bird_forecast.paths import ROOT
 SITE = ROOT / "site"
 
 
+def season_year(now: pd.Timestamp) -> int:
+    """The year whose seasons the page shows: next year's once fall is over."""
+    local = now.tz_convert(nws.TZ)
+    return local.year + 1 if local.month == 12 else local.year
+
+
 def main() -> None:
     now = pd.Timestamp.now(tz="UTC")
     hourly, nws_updated = nws.hourly_weather(now)
@@ -34,6 +40,10 @@ def main() -> None:
             "lights_off_score": forecast.LIGHTS_OFF,
         },
         "nights": nights,
+        "next_season_start": forecast.next_season_start(now),
+        "season_curves": {
+            season: forecast.season_curve(season_year(now), season) for season in ("spring", "fall")
+        },
     }
     text = json.dumps(report, indent=2) + "\n"
     (SITE / "history").mkdir(parents=True, exist_ok=True)

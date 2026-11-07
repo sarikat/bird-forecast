@@ -1,19 +1,13 @@
 # Tasks
 
-## Now — Milestone 3: website
-
-- [ ] Tonight's risk card (level, predicted range, one-line reason)
-- [ ] 7-night outlook strip
-- [ ] Season curve with tonight's marker
-- [ ] "Why tonight" factor breakdown
-
-## Next — Milestone 4: automation
+## Now — Milestone 4: automation
 
 - [ ] GitHub Pages
 - [ ] GitHub Actions daily cron to run forecast and deploy
 
 ## Later
 
+- [ ] Season chart: zoom to the forecast week (7 dots crowd together on a 4-month axis)
 - [ ] Track record: score each `site/history/` forecast against what happened (needs a source of live collision counts, e.g. Chicago Bird Collision Monitors)
 - [ ] Use NWS probabilityOfPrecipitation for nights beyond the ~3-day rain-amount horizon
 - [ ] Upstream weather (e.g. St. Louis / Indianapolis in spring, Minneapolis / Green Bay in fall) as extra features
@@ -42,3 +36,6 @@
 - [x] Live weather from NWS: O'Hare hourly observations + gridpoint forecast (`src/bird_forecast/nws.py`)
 - [x] Nightly forecast, lights on vs. off, with drivers vs. a typical night (`src/bird_forecast/forecast.py`)
 - [x] `scripts/forecast.py` → `site/risk.json` (+ dated copy in `site/history/`); off-season nights flagged
+- [x] Typical weather is date-specific (±7 days), so the season curve and "vs. typical" compare like with like
+- [x] Season = dates the model was trained on (fall starts ~Aug 8, not Aug 1)
+- [x] Website `site/index.html`: tonight's level, lights on vs. off, 7-night strip, why-tonight factors, season curve, table view, off-season state
