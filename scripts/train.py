@@ -24,6 +24,7 @@ from bird_forecast.plotstyle import INK, INK_2, SEASON_COLORS, SEASON_TINTS, SUR
 warnings.filterwarnings("ignore", category=RuntimeWarning)  # NB fits probe extreme alphas
 EXAMPLE_YEAR = 2016  # the most recent season, so it isn't cherry-picked
 PARAM_DRAWS = 2000
+WEATHER_COLUMNS = [c for c in model.PREDICTORS if c not in ("season", "season_day", "year_c", "light_score")]
 rng = np.random.default_rng(0)
 
 
@@ -212,6 +213,10 @@ def main() -> None:
         backtest={
             "scores": comparison.round(4).to_dict(),
             "levels": levels.round(4).to_dict(orient="index"),
+        },
+        typical={
+            season: g[WEATHER_COLUMNS].median().round(3).to_dict()
+            for season, g in data.groupby("season")
         },
     )
     model.save(res, meta)

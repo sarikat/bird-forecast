@@ -1,0 +1,250 @@
+{
+  "generated_at": "2026-11-07T20:51:04+00:00",
+  "nws_forecast_updated": "2026-11-07T20:26:07+00:00",
+  "location": "McCormick Place, Chicago",
+  "weather_source": "NWS forecast grid LOT/66,77 and observations at KORD",
+  "model": {
+    "train_years": [
+      2000,
+      2016
+    ],
+    "level_cutoffs": [
+      1.796,
+      5.83,
+      12.808
+    ],
+    "lights_on_score": 17,
+    "lights_off_score": 3
+  },
+  "nights": [
+    {
+      "night_of": "2026-11-07",
+      "morning": "2026-11-08",
+      "season": "fall",
+      "weather": {
+        "wind": "SW at 4 m/s",
+        "wind_speed_ms": 4.1,
+        "temp_evening_c": 5.6,
+        "temp_change_c": 0.7,
+        "sky_cover_pct": 28,
+        "rain": false,
+        "moon_pct": 3
+      },
+      "in_season": true,
+      "level": "Moderate",
+      "lights_on": {
+        "expected": 2.9,
+        "range80": [
+          0,
+          7
+        ]
+      },
+      "lights_off": {
+        "expected": 0.9,
+        "level": "Low"
+      },
+      "typical_for_date": 2.3,
+      "vs_typical": 1.27,
+      "drivers": [
+        {
+          "factor": "wind",
+          "effect": 1.48
+        }
+      ]
+    },
+    {
+      "night_of": "2026-11-08",
+      "morning": "2026-11-09",
+      "season": "fall",
+      "weather": {
+        "wind": "NW at 3 m/s",
+        "wind_speed_ms": 2.6,
+        "temp_evening_c": 8.8,
+        "temp_change_c": 3.2,
+        "sky_cover_pct": 14,
+        "rain": false,
+        "moon_pct": 1
+      },
+      "in_season": true,
+      "level": "Moderate",
+      "lights_on": {
+        "expected": 2.5,
+        "range80": [
+          0,
+          6
+        ]
+      },
+      "lights_off": {
+        "expected": 0.8,
+        "level": "Low"
+      },
+      "typical_for_date": 2.2,
+      "vs_typical": 1.13,
+      "drivers": [
+        {
+          "factor": "wind",
+          "effect": 1.42
+        },
+        {
+          "factor": "temperature",
+          "effect": 0.8
+        }
+      ]
+    },
+    {
+      "night_of": "2026-11-09",
+      "morning": "2026-11-10",
+      "season": "fall",
+      "weather": {
+        "wind": "SW at 4 m/s",
+        "wind_speed_ms": 3.5,
+        "temp_evening_c": 11.0,
+        "temp_change_c": 2.2,
+        "sky_cover_pct": 20,
+        "rain": false,
+        "moon_pct": 0
+      },
+      "in_season": true,
+      "level": "Moderate",
+      "lights_on": {
+        "expected": 2.5,
+        "range80": [
+          0,
+          6
+        ]
+      },
+      "lights_off": {
+        "expected": 0.8,
+        "level": "Low"
+      },
+      "typical_for_date": 2.1,
+      "vs_typical": 1.16,
+      "drivers": [
+        {
+          "factor": "wind",
+          "effect": 1.38
+        }
+      ]
+    },
+    {
+      "night_of": "2026-11-10",
+      "morning": "2026-11-11",
+      "season": "fall",
+      "weather": {
+        "wind": "light and variable",
+        "wind_speed_ms": 0.7,
+        "temp_evening_c": 9.4,
+        "temp_change_c": -1.5,
+        "sky_cover_pct": 38,
+        "rain": null,
+        "moon_pct": 2
+      },
+      "in_season": true,
+      "level": "Moderate",
+      "lights_on": {
+        "expected": 2.5,
+        "range80": [
+          0,
+          6
+        ]
+      },
+      "lights_off": {
+        "expected": 0.8,
+        "level": "Low"
+      },
+      "typical_for_date": 2.1,
+      "vs_typical": 1.17,
+      "drivers": []
+    },
+    {
+      "night_of": "2026-11-11",
+      "morning": "2026-11-12",
+      "season": "fall",
+      "weather": {
+        "wind": "N at 4 m/s",
+        "wind_speed_ms": 3.8,
+        "temp_evening_c": 9.2,
+        "temp_change_c": -0.3,
+        "sky_cover_pct": 68,
+        "rain": null,
+        "moon_pct": 6
+      },
+      "in_season": true,
+      "level": "Moderate",
+      "lights_on": {
+        "expected": 2.1,
+        "range80": [
+          0,
+          5
+        ]
+      },
+      "lights_off": {
+        "expected": 0.6,
+        "level": "Low"
+      },
+      "typical_for_date": 2.1,
+      "vs_typical": 1.0,
+      "drivers": []
+    },
+    {
+      "night_of": "2026-11-12",
+      "morning": "2026-11-13",
+      "season": "fall",
+      "weather": {
+        "wind": "N at 5 m/s",
+        "wind_speed_ms": 5.3,
+        "temp_evening_c": 4.7,
+        "temp_change_c": -4.4,
+        "sky_cover_pct": 62,
+        "rain": null,
+        "moon_pct": 12
+      },
+      "in_season": true,
+      "level": "Low",
+      "lights_on": {
+        "expected": 1.7,
+        "range80": [
+          0,
+          4
+        ]
+      },
+      "lights_off": {
+        "expected": 0.5,
+        "level": "Low"
+      },
+      "typical_for_date": 2.0,
+      "vs_typical": 0.82,
+      "drivers": []
+    },
+    {
+      "night_of": "2026-11-13",
+      "morning": "2026-11-14",
+      "season": "fall",
+      "weather": {
+        "wind": "NW at 3 m/s",
+        "wind_speed_ms": 2.6,
+        "temp_evening_c": 4.2,
+        "temp_change_c": -0.6,
+        "sky_cover_pct": 40,
+        "rain": null,
+        "moon_pct": 19
+      },
+      "in_season": true,
+      "level": "Moderate",
+      "lights_on": {
+        "expected": 2.2,
+        "range80": [
+          0,
+          6
+        ]
+      },
+      "lights_off": {
+        "expected": 0.7,
+        "level": "Low"
+      },
+      "typical_for_date": 2.0,
+      "vs_typical": 1.12,
+      "drivers": []
+    }
+  ]
+}

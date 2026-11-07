@@ -40,7 +40,7 @@ def test_fitted_model_matches_statsmodels(tmp_path, monkeypatch):
     res = model.fit(data)
     monkeypatch.setattr(model, "MODEL_PKL", tmp_path / "m.pkl")
     monkeypatch.setattr(model, "MODEL_META", tmp_path / "m.json")
-    meta = model.ModelMeta(model.FORMULA, model.TRAIN_YEARS, len(data), 1.0, [1, 2, 3], (3, 17), {})
+    meta = model.ModelMeta(model.FORMULA, model.TRAIN_YEARS, len(data), 1.0, [1, 2, 3], (3, 17), {}, {})
     model.save(res, meta)
     fitted, _ = model.load(tmp_path / "m.pkl")
     sample = data.sample(50, random_state=0)

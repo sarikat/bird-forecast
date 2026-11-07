@@ -34,6 +34,7 @@ uv run scripts/download_weather.py   # NOAA hourly weather, 1978–2019
 uv run scripts/build_nightly.py      # one row per migration night
 uv run scripts/explore.py            # exploratory figures
 uv run scripts/train.py              # backtest + fit + save the model
+uv run scripts/forecast.py           # live forecast for the next 7 nights -> site/risk.json
 uv run pytest
 ```
 

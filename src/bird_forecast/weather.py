@@ -36,6 +36,18 @@ def _value(field: pd.Series, i: int, qc_i: int, missing: str, scale: float = 1.0
     return pd.to_numeric(value, errors="coerce").where(~bad) / scale
 
 
+HOURLY_COLUMNS = [
+    "wind_u", "wind_v", "wind_speed", "ceiling_m", "visibility_km",
+    "temp_c", "dewpoint_c", "pressure_hpa", "precip_mm", "sky_cover",
+]
+
+
+def wind_components(speed_ms, from_deg):
+    """Components of where the air is going (m/s): v > 0 is a south wind (blowing north)."""
+    theta = np.deg2rad(from_deg)
+    return -speed_ms * np.sin(theta), -speed_ms * np.cos(theta)
+
+
 def load_hourly(years: range | None = None) -> pd.DataFrame:
     """Parsed routine hourly observations with a local-time index."""
     files = sorted(WEATHER_DIR.glob("ORD_*.csv"))
@@ -52,10 +64,9 @@ def load_hourly(years: range | None = None) -> pd.DataFrame:
     wind_speed = _value(raw["WND"], 3, 4, "9999", scale=10)
     calm = _part(raw["WND"], 2) == "C"
     wind_speed = wind_speed.mask(calm, 0.0)
-    theta = np.deg2rad(wind_dir)
-    # Components of where the air is going: v > 0 is a south wind (blowing north).
-    out["wind_u"] = (-wind_speed * np.sin(theta)).mask(calm, 0.0)
-    out["wind_v"] = (-wind_speed * np.cos(theta)).mask(calm, 0.0)
+    wind_u, wind_v = wind_components(wind_speed, wind_dir)
+    out["wind_u"] = wind_u.mask(calm, 0.0)
+    out["wind_v"] = wind_v.mask(calm, 0.0)
     out["wind_speed"] = wind_speed
 
     out["ceiling_m"] = _value(raw["CIG"], 0, 1, "99999")  # 22000 = unlimited

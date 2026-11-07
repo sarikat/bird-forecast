@@ -6,7 +6,9 @@ fall. Counts are far more variable than Poisson (variance ~17x the mean), so
 the NB2 dispersion `alpha` is estimated alongside the coefficients.
 
 Every predictor must be available at forecast time from the NWS forecast for
-tonight plus observed weather for last night; see features.py.
+tonight plus observed weather for last night; see features.py. (Pressure
+change and low cloud ceiling were dropped for that reason: the NWS grid for
+Chicago doesn't forecast them, and the backtest showed no loss without them.)
 """
 
 import json
@@ -47,7 +49,7 @@ CALENDAR = (
 LIGHTS = f"{SEASON}:light_score"
 WEATHER = (
     f"{SEASON}:(wind_u + wind_v + wind_speed + temp_evening_c + temp_change_24h"
-    " + pressure_change_24h + sky_cover + low_ceiling_frac + any_rain + moon_illum)"
+    " + sky_cover + any_rain + moon_illum)"
 )
 PREVIOUS_NIGHT = f"{SEASON}:(tailwind_prev + rain_prev + temp_change_prev + nights_since_good)"
 
@@ -55,7 +57,7 @@ FORMULA = " + ".join([CALENDAR, LIGHTS, WEATHER, PREVIOUS_NIGHT])
 PREDICTORS = [
     "season", "season_day", "year_c", "light_score",
     "wind_u", "wind_v", "wind_speed", "temp_evening_c", "temp_change_24h",
-    "pressure_change_24h", "sky_cover", "low_ceiling_frac", "any_rain", "moon_illum",
+    "sky_cover", "any_rain", "moon_illum",
     "tailwind_prev", "rain_prev", "temp_change_prev", "nights_since_good",
 ]
 
@@ -121,6 +123,9 @@ class ModelMeta:
     level_cutoffs: list[float]
     light_score_range: tuple[float, float]
     backtest: dict
+    # Median of each weather predictor per season in the training data: the
+    # "typical night" that forecasts are compared against to explain them.
+    typical: dict[str, dict[str, float]]
 
 
 class FittedModel:
